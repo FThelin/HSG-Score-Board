@@ -8,6 +8,7 @@ export default class UserProvider extends React.Component {
     this.state = {
       username: "",
       loggedInUser: "",
+      loggedInUserId: "",
       failedLogin: false,
     };
     this.createUser = this.createUser.bind(this);
@@ -34,14 +35,15 @@ export default class UserProvider extends React.Component {
       },
       body: JSON.stringify(data),
     });
-    if (response.status == 200) {
+    if (response.status === 200) {
       const responseData = await response.json();
       console.log(responseData);
       this.setState({
-        loggedInUser: responseData.user.username,
+        loggedInUser: responseData.username,
+        loggedInUserId: responseData._id,
         failedLogin: false,
       });
-    } else if (response.status == 401) {
+    } else if (response.status === 401) {
       this.setState({ failedLogin: true });
     }
   }

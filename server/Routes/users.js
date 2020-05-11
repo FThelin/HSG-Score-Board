@@ -2,32 +2,21 @@ const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const cookieSession = require("cookie-session");
+const adminCheck = require("./admin");
 
 router.use(express.json());
 
-router.use(
-  cookieSession({
-    secret: "aVeryS3cr3tK3y",
-    maxAge: 1000 * 10,
-    sameSite: "strict",
-    httpOnly: true,
-    // secret: false,
-  })
-);
-
-// Users
-// get all
-router.get("/", async (req, res) => {
+// Get
+router.get("/", adminCheck, async (req, res) => {
   try {
     const users = await User.find();
-    res.json(users);
+    res.status(200).json(users);
   } catch (err) {
-    res.json(err);
+    res.status(400).json(err);
   }
 });
 
-// post user
+// Register user
 router.post("/register", async (req, res) => {
   try {
     const password = await bcrypt.hash(req.body.password, 10);
@@ -40,29 +29,54 @@ router.post("/register", async (req, res) => {
   } catch (err) {
     res.json(err);
   }
-
-  // res.redirect("/login")
 });
 
 // Login user
 router.post("/login", async (req, res) => {
-  const user = await User.findOne({ username: req.body.loggedinusername });
   console.log(req.body);
-  console.log("user", user);
+  const user = await User.findOne({ username: req.body.loggedinusername });
+  console.log(user);
   if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
     return res.status(401).json("Wrong username or password");
   }
 
-  // //Create session
+  //Set session username
   req.session.username = user.username;
-  //req.session.role = null;
+  if (req.session.username === "admin") {
+    req.session.role = "admin";
+  } else {
+    req.session.role = "player";
+  }
 
   //Send response
-  res.status(200).json({ user, cookie: req.session.username });
+  res.status(200).json(user);
 });
 
 // Update user
+router.put("/:id", adminCheck, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
 
+    const newPassword = await bcrypt.hash(req.body.password, 10);
+
+    user.password = newPassword;
+
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 // Delete user
+router.delete("/:id", adminCheck, async (req, res) => {
+  try {
+    await User.deleteOne({ _id: req.params.id });
+
+    res.status(200).send("User deleted");
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 module.exports = router;

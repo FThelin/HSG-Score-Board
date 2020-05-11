@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Form, FormField, TextInput, Box, Button } from "grommet";
 import { UserConsumer } from "../../context/userContext";
 

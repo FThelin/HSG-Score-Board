@@ -1,0 +1,31 @@
+GET http://localhost:5000/games/
+
+
+###
+
+POST http://localhost:5000/games/5eb50e047843d9e3dd4d7440/5eb91c18353fbc28281b40d5
+Content-Type: application/json
+
+{
+"goals": 2,
+"assists": 2,
+"penalties": 2
+}
+
+###
+
+PUT http://localhost:5000/games/5eb9222c2e9c502f74898f33
+Content-Type: application/json
+
+{
+"goals": 9,
+"assists": 9,
+"penalties": 9
+}
+
+###
+
+DELETE http://localhost:5000/games/5eb9222c2e9c502f74898f33
+
+
+###
