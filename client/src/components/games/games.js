@@ -7,9 +7,17 @@ import {
   TextInput,
   Button,
   FormField,
+  Table,
+  TableBody,
+  TableHeader,
+  TableRow,
+  TableCell,
 } from "grommet";
+
+import { Edit, FormDown } from "grommet-icons";
 import { GameConsumer } from "../../context/gameContext";
 import { UserConsumer } from "../../context/userContext";
+import PlayerStats from "../playerstats/playerstats";
 
 const Games = () => {
   const [value, setValue] = useState({
@@ -17,6 +25,7 @@ const Games = () => {
     assists: 0,
     penalties: 0,
   });
+  const [showForm, setShowForm] = useState(true);
 
   return (
     <UserConsumer>
@@ -24,24 +33,55 @@ const Games = () => {
         <GameConsumer>
           {(game) => (
             <Accordion>
-              {game.state.games.map((gamex, index) => (
+              {game.state.games.map((theGame, index) => (
                 <AccordionPanel
                   key={index}
-                  label={`${gamex.team} (${gamex.type}) ${gamex.date}`}
+                  label={`${theGame.team} (${theGame.type}) ${theGame.date}`}
                 >
                   <Box pad="medium" background="light-2">
-                    {user.state.loggedInUser && (
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableCell scope="col" border="bottom">
+                            Spelare
+                          </TableCell>
+                          <TableCell scope="col" border="bottom">
+                            Mål
+                          </TableCell>
+                          <TableCell scope="col" border="bottom">
+                            Assist
+                          </TableCell>
+                          <TableCell scope="col" border="bottom">
+                            Utv.min
+                          </TableCell>
+                        </TableRow>
+                      </TableHeader>
+                      {game.state.allResults.map((result) => (
+                        <TableBody key={result._id}>
+                          {result.game._id === theGame._id ? (
+                            <PlayerStats
+                              player={result.user.username}
+                              goals={result.goals}
+                              assists={result.assists}
+                              penalties={result.penalties}
+                              loggedInUser={user.state.loggedInUser}
+                            />
+                          ) : null}
+                        </TableBody>
+                      ))}
+                    </Table>
+                    {
                       <Form
                         value={value}
                         onChange={(nextValue) => setValue(nextValue)}
                         onReset={() => setValue({})}
                         onSubmit={({ value }) => {
                           game.createPost(
-                            user.state.loggedInUser,
                             user.state.loggedInUserId,
-                            value,
-                            gamex._id
+                            theGame._id,
+                            value
                           );
+                          setShowForm(false);
                         }}
                       >
                         <FormField name="goals" label="Mål">
@@ -58,7 +98,7 @@ const Games = () => {
                           <Button type="reset" label="Reset" />
                         </Box>
                       </Form>
-                    )}
+                    }
                   </Box>
                 </AccordionPanel>
               ))}

@@ -23,7 +23,7 @@ const Scoreboard = () => {
         </TableRow>
         <TableRow>
           <TableCell scope="row">
-            <strong>Jonathan Dahlgren</strong>
+            <strong>Jonathan Dahlipren</strong>
           </TableCell>
           <TableCell>0</TableCell>
         </TableRow>

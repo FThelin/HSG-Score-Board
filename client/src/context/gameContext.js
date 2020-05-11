@@ -7,13 +7,16 @@ export default class GameProvider extends React.Component {
     super(props);
     this.state = {
       games: [],
+      allResults: [],
     };
     this.getGames = this.getGames.bind(this);
+    this.getAllResults = this.getAllResults.bind(this);
     this.createPost = this.createPost.bind(this);
   }
 
   componentDidMount() {
     this.getGames();
+    this.getAllResults();
     console.log(this.state.games);
   }
 
@@ -26,21 +29,28 @@ export default class GameProvider extends React.Component {
       console.log("Error");
     }
   }
-
-  createPost(name, id, value, gameId) {
-    const gameObject = {
-      name,
-      id,
-      goals: value.goals,
-      assist: value.assists,
-      penalties: value.penalties,
-    };
-
-    for (const game of this.state.games) {
-      if (game._id === gameId) {
-        console.log("Match!!!");
-      }
+  async getAllResults() {
+    try {
+      const response = await fetch("http://localhost:5000/games/results", {});
+      const data = await response.json();
+      this.setState({ allResults: data });
+    } catch {
+      console.log("Error");
     }
+  }
+
+  async createPost(userId, gameId, value) {
+    const response = await fetch(
+      `http://localhost:5000/games/${gameId}/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      }
+    );
+    this.getAllResults();
   }
 
   render() {

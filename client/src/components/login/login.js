@@ -16,6 +16,7 @@ const Login = (props) => {
             onReset={() => setValue({})}
             onSubmit={({ value }) => {
               user.loginUser(value);
+              //props.setShowLogin(false);
             }}
           >
             <FormField name="loggedinusername" label="Användarnamn">

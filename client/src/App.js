@@ -61,7 +61,7 @@ const App = () => {
                   onEsc={() => setShowLogin(false)}
                   onClickOutside={() => setShowLogin(false)}
                 >
-                  <Login />
+                  <Login setShowLogin={setShowLogin} />
                 </Layer>
               )}
               {user.state.loggedInUser && (

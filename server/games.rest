@@ -3,6 +3,11 @@ GET http://localhost:5000/games/
 
 ###
 
+GET http://localhost:5000/games/results
+
+
+###
+
 POST http://localhost:5000/games/5eb50e047843d9e3dd4d7440/5eb91c18353fbc28281b40d5
 Content-Type: application/json
 

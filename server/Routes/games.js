@@ -6,10 +6,18 @@ const restricted = require("./restricted");
 
 router.use(express.json());
 
-//Find all
-router.get("/", async (req, res) => {
+//Find all results
+router.get("/results", async (req, res) => {
   try {
     const games = await GameResult.find().populate("game").populate("user");
+    res.status(200).json(games);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+router.get("/", async (req, res) => {
+  try {
+    const games = await Game.find();
     res.status(200).json(games);
   } catch (err) {
     res.status(400).json(err);
@@ -24,7 +32,7 @@ router.post("/:game/:user", restricted, async (req, res) => {
       user: req.params.user,
       goals: req.body.goals,
       assists: req.body.assists,
-      penalties: req.body.assists,
+      penalties: req.body.penalties,
     });
 
     const newResult = await gameResult.save();
