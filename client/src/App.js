@@ -11,20 +11,9 @@ import Login from "./components/login/login";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [theUser, setTheUser] = useState("");
   const [showRegisterConfirmation, setShowRegisterConfirmation] = useState(
     false
   );
-
-  useEffect(() => {
-    if (document.cookie) {
-      let user = JSON.parse(localStorage.getItem("user"));
-      console.log("USER:", user);
-      setTheUser(user);
-    } else {
-      localStorage.clear();
-    }
-  }, [document.cookie]);
 
   return (
     <UserProvider>
@@ -75,7 +64,9 @@ const App = () => {
                   <Login setShowLogin={setShowLogin} />
                 </Layer>
               )}
-              {theUser && <Text>Logged in as: {theUser}</Text>}
+              {user.state.loggedInUser && (
+                <Text>Logged in as: {user.state.loggedInUser}</Text>
+              )}
 
               <Tabs>
                 <Tab title="Poängliga">

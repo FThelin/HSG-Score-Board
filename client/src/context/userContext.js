@@ -15,6 +15,24 @@ export default class UserProvider extends React.Component {
     this.loginUser = this.loginUser.bind(this);
   }
 
+  componentDidMount() {
+    this.getLoggedInUser();
+  }
+
+  getLoggedInUser() {
+    if (document.cookie) {
+      let user = JSON.parse(localStorage.getItem("user"));
+      let userId = JSON.parse(localStorage.getItem("userId"));
+
+      this.setState({
+        loggedInUser: user,
+        loggedInUserId: userId,
+      });
+    } else {
+      localStorage.clear();
+    }
+  }
+
   async createUser(data) {
     const response = await fetch("http://localhost:5000/users/register", {
       method: "POST",
@@ -38,8 +56,9 @@ export default class UserProvider extends React.Component {
     });
     if (response.status === 200) {
       const responseData = await response.json();
-      console.log(responseData);
+
       localStorage.setItem("user", JSON.stringify(responseData.username));
+      localStorage.setItem("userId", JSON.stringify(responseData._id));
       this.setState({
         loggedInUser: responseData.username,
         loggedInUserId: responseData._id,

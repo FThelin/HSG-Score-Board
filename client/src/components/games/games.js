@@ -24,8 +24,15 @@ const Games = () => {
     assists: 0,
     penalties: 0,
   });
-  const [showForm, setShowForm] = useState(true);
-  const [edit, editForm] = useState(false);
+
+  const form = (allResults, loggedInUser) => {
+    for (const result of allResults) {
+      if (result.user.username != loggedInUser) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   return (
     <UserConsumer>
@@ -66,39 +73,40 @@ const Games = () => {
                               assists={result.assists}
                               penalties={result.penalties}
                               loggedInUser={user.state.loggedInUser}
-                              setShowForm={setShowForm}
                             />
                           ) : null}
                         </TableBody>
                       ))}
                     </Table>
 
-                    <Form
-                      value={value}
-                      onChange={(nextValue) => setValue(nextValue)}
-                      onReset={() => setValue({})}
-                      onSubmit={({ value }) => {
-                        game.createPost(
-                          user.state.loggedInUserId,
-                          theGame._id,
-                          value
-                        );
-                      }}
-                    >
-                      <FormField name="goals" label="Mål">
-                        <TextInput name="goals" />
-                      </FormField>
-                      <FormField name="assists" label="Assists">
-                        <TextInput name="assists" />
-                      </FormField>
-                      <FormField name="penalties" label="Utv.min">
-                        <TextInput name="penalties" />
-                      </FormField>
-                      <Box direction="row" gap="medium">
-                        <Button type="submit" primary label="Submit" />
-                        <Button type="reset" label="Reset" />
-                      </Box>
-                    </Form>
+                    {form(game.state.allResults, user.state.loggedInUser) && (
+                      <Form
+                        value={value}
+                        onChange={(nextValue) => setValue(nextValue)}
+                        onReset={() => setValue({})}
+                        onSubmit={({ value }) => {
+                          game.createPost(
+                            user.state.loggedInUserId,
+                            theGame._id,
+                            value
+                          );
+                        }}
+                      >
+                        <FormField name="goals" label="Mål">
+                          <TextInput name="goals" />
+                        </FormField>
+                        <FormField name="assists" label="Assists">
+                          <TextInput name="assists" />
+                        </FormField>
+                        <FormField name="penalties" label="Utv.min">
+                          <TextInput name="penalties" />
+                        </FormField>
+                        <Box direction="row" gap="medium">
+                          <Button type="submit" primary label="Submit" />
+                          <Button type="reset" label="Reset" />
+                        </Box>
+                      </Form>
+                    )}
                   </Box>
                 </AccordionPanel>
               ))}
