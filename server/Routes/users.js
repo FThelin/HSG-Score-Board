@@ -33,15 +33,20 @@ router.post("/register", async (req, res) => {
 
 // Login user
 router.post("/login", async (req, res) => {
-  console.log(req.body);
   const user = await User.findOne({ username: req.body.loggedinusername });
-  console.log(user);
+
   if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
     return res.status(401).json("Wrong username or password");
   }
 
   //Set session username
+  // if (req.session.username === user.username) {
+  //   req.session = null;
+  // }
+
   req.session.username = user.username;
+  console.log("user.username", user.username);
+  console.log("user.username", req.session.username);
   if (req.session.username === "admin") {
     req.session.role = "admin";
   } else {

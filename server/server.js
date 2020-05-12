@@ -4,6 +4,7 @@ const usersRoute = require("./Routes/users");
 const gamesRoute = require("./Routes/games");
 const cookieSession = require("cookie-session");
 const port = process.env.PORT || 5000;
+const cors = require("cors");
 
 const app = express();
 
@@ -11,16 +12,17 @@ app.use(
   cookieSession({
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60,
-    sameSite: "strict",
-    httpOnly: true,
+    httpOnly: false,
   })
 );
+
+//app.use(cors({ credentials: true, origin: ["http://localhost:3000"] }));
 
 //CORS handling
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header({
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": req.headers.origin,
     "Access-Control-Allow-Credentials": true,
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
     "Access-Control-Allow-Headers":

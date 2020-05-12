@@ -30,7 +30,9 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5000/games/5eb9222c2e9c502f74898f33
+DELETE http://localhost:5000/games/5eba888a883a950ce4e2389e
+    
+
 
 
 ###

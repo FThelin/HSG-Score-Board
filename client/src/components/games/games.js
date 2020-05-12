@@ -14,7 +14,6 @@ import {
   TableCell,
 } from "grommet";
 
-import { Edit, FormDown } from "grommet-icons";
 import { GameConsumer } from "../../context/gameContext";
 import { UserConsumer } from "../../context/userContext";
 import PlayerStats from "../playerstats/playerstats";
@@ -26,6 +25,7 @@ const Games = () => {
     penalties: 0,
   });
   const [showForm, setShowForm] = useState(true);
+  const [edit, editForm] = useState(false);
 
   return (
     <UserConsumer>
@@ -60,45 +60,45 @@ const Games = () => {
                         <TableBody key={result._id}>
                           {result.game._id === theGame._id ? (
                             <PlayerStats
+                              id={result._id}
                               player={result.user.username}
                               goals={result.goals}
                               assists={result.assists}
                               penalties={result.penalties}
                               loggedInUser={user.state.loggedInUser}
+                              setShowForm={setShowForm}
                             />
                           ) : null}
                         </TableBody>
                       ))}
                     </Table>
-                    {
-                      <Form
-                        value={value}
-                        onChange={(nextValue) => setValue(nextValue)}
-                        onReset={() => setValue({})}
-                        onSubmit={({ value }) => {
-                          game.createPost(
-                            user.state.loggedInUserId,
-                            theGame._id,
-                            value
-                          );
-                          setShowForm(false);
-                        }}
-                      >
-                        <FormField name="goals" label="Mål">
-                          <TextInput name="goals" />
-                        </FormField>
-                        <FormField name="assists" label="Assists">
-                          <TextInput name="assists" />
-                        </FormField>
-                        <FormField name="penalties" label="Utv.min">
-                          <TextInput name="penalties" />
-                        </FormField>
-                        <Box direction="row" gap="medium">
-                          <Button type="submit" primary label="Submit" />
-                          <Button type="reset" label="Reset" />
-                        </Box>
-                      </Form>
-                    }
+
+                    <Form
+                      value={value}
+                      onChange={(nextValue) => setValue(nextValue)}
+                      onReset={() => setValue({})}
+                      onSubmit={({ value }) => {
+                        game.createPost(
+                          user.state.loggedInUserId,
+                          theGame._id,
+                          value
+                        );
+                      }}
+                    >
+                      <FormField name="goals" label="Mål">
+                        <TextInput name="goals" />
+                      </FormField>
+                      <FormField name="assists" label="Assists">
+                        <TextInput name="assists" />
+                      </FormField>
+                      <FormField name="penalties" label="Utv.min">
+                        <TextInput name="penalties" />
+                      </FormField>
+                      <Box direction="row" gap="medium">
+                        <Button type="submit" primary label="Submit" />
+                        <Button type="reset" label="Reset" />
+                      </Box>
+                    </Form>
                   </Box>
                 </AccordionPanel>
               ))}

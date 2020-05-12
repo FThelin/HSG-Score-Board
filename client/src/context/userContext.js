@@ -30,6 +30,7 @@ export default class UserProvider extends React.Component {
   async loginUser(data) {
     const response = await fetch("http://localhost:5000/users/login", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
