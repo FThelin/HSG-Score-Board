@@ -39,6 +39,7 @@ export default class UserProvider extends React.Component {
     if (response.status === 200) {
       const responseData = await response.json();
       console.log(responseData);
+      localStorage.setItem("user", JSON.stringify(responseData.username));
       this.setState({
         loggedInUser: responseData.username,
         loggedInUserId: responseData._id,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grommet, Tabs, Tab, Box, Button, Layer, Text } from "grommet";
 import Games from "./components/games/games";
 import Scoreboard from "./components/scoreboard/scoreboard";
@@ -11,9 +11,20 @@ import Login from "./components/login/login";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [theUser, setTheUser] = useState("");
   const [showRegisterConfirmation, setShowRegisterConfirmation] = useState(
     false
   );
+
+  useEffect(() => {
+    if (document.cookie) {
+      let user = JSON.parse(localStorage.getItem("user"));
+      console.log("USER:", user);
+      setTheUser(user);
+    } else {
+      localStorage.clear();
+    }
+  }, [document.cookie]);
 
   return (
     <UserProvider>
@@ -64,9 +75,7 @@ const App = () => {
                   <Login setShowLogin={setShowLogin} />
                 </Layer>
               )}
-              {user.state.loggedInUser && (
-                <Text>Logged in as: {user.state.loggedInUser}</Text>
-              )}
+              {theUser && <Text>Logged in as: {theUser}</Text>}
 
               <Tabs>
                 <Tab title="Poängliga">
