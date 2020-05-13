@@ -13,12 +13,12 @@ export default class GameProvider extends React.Component {
     this.getAllResults = this.getAllResults.bind(this);
     this.createPost = this.createPost.bind(this);
     this.deleteResult = this.deleteResult.bind(this);
+    this.editPost = this.editPost.bind(this);
   }
 
   componentDidMount() {
     this.getGames();
     this.getAllResults();
-    console.log(this.state.games);
   }
 
   async getGames() {
@@ -51,13 +51,24 @@ export default class GameProvider extends React.Component {
         body: JSON.stringify(value),
       }
     );
+    console.log(response);
+    this.getAllResults();
+  }
+
+  async editPost(gameId, value) {
+    const response = await fetch(`http://localhost:5000/games/${gameId}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    });
+    console.log(response);
     this.getAllResults();
   }
 
   async deleteResult(id) {
-    /// FEL ID????
-    console.log(id);
-
     try {
       const response = await fetch(`http://localhost:5000/games/${id}`, {
         method: "DELETE",
@@ -78,6 +89,7 @@ export default class GameProvider extends React.Component {
         value={{
           state: this.state,
           createPost: this.createPost,
+          editPost: this.editPost,
           deleteResult: this.deleteResult,
         }}
       >

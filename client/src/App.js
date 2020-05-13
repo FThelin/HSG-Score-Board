@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Grommet, Tabs, Tab, Box, Button, Layer, Text } from "grommet";
 import Games from "./components/games/games";
 import Scoreboard from "./components/scoreboard/scoreboard";
 import Register from "./components/register/register";
+import AllUsers from "./components/allUsers/allUsers";
 import UserProvider, { UserConsumer } from "./context/userContext";
 import GameProvider from "./context/gameContext";
-import { LinkDown } from "grommet-icons";
+
 import Login from "./components/login/login";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [showRegisterConfirmation, setShowRegisterConfirmation] = useState(
-    false
-  );
+  const [showAllUsers, setShowAllUsers] = useState(false);
 
   return (
     <UserProvider>
@@ -32,27 +31,7 @@ const App = () => {
                   onEsc={() => setShowRegister(false)}
                   onClickOutside={() => setShowRegister(false)}
                 >
-                  <Register
-                    setShowRegisterConfirmation={setShowRegisterConfirmation}
-                  />
-                  {showRegisterConfirmation && (
-                    <Box
-                      // animation={{
-                      //   duration: "1s",
-                      //   jiggle: { duration: "0.1s" },
-                      // }}
-                      pad="small"
-                      align="center"
-                    >
-                      <Text>Användare {user.state.username} skapad.</Text>
-                      <Text>Vänligen logga in.</Text>
-                      <LinkDown size="medium" color="gray" />
-                      <Button
-                        label="close"
-                        onClick={() => setShowRegister(false)}
-                      />
-                    </Box>
-                  )}
+                  <Register setShowRegister={setShowRegister} />
                 </Layer>
               )}
               {showLogin && (
@@ -66,6 +45,25 @@ const App = () => {
               )}
               {user.state.loggedInUser && (
                 <Text>Logged in as: {user.state.loggedInUser}</Text>
+              )}
+              {user.state.loggedInUser === "admin" && (
+                <Button
+                  onClick={() => {
+                    setShowAllUsers(true);
+                    user.getAllUsers();
+                  }}
+                  primary
+                  label="Alla användare"
+                ></Button>
+              )}
+              {showAllUsers && (
+                <Layer
+                  elevation="medium"
+                  onEsc={() => setShowAllUsers(false)}
+                  onClickOutside={() => setShowAllUsers(false)}
+                >
+                  <AllUsers />
+                </Layer>
               )}
 
               <Tabs>

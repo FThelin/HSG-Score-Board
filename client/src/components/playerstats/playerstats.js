@@ -1,9 +1,12 @@
-import React from "react";
-import { TableRow, TableCell } from "grommet";
+import React, { useState } from "react";
+import { TableRow, TableCell, Layer } from "grommet";
 import { FormEdit, FormTrash } from "grommet-icons";
 import { GameConsumer } from "../../context/gameContext";
+import EditForm from "../editForm/editForm";
 
 const PlayerStats = (props) => {
+  const [showEditForm, setShowEditForm] = useState(false);
+
   return (
     <>
       <GameConsumer>
@@ -20,7 +23,7 @@ const PlayerStats = (props) => {
                 <FormEdit
                   size="medium"
                   color="grey"
-                  // onClick={}
+                  onClick={() => setShowEditForm(true)}
                 ></FormEdit>
                 <FormTrash
                   onClick={() => game.deleteResult(props.id)}
@@ -28,6 +31,19 @@ const PlayerStats = (props) => {
                   color="grey"
                 ></FormTrash>
               </TableCell>
+            )}
+            {showEditForm && (
+              <Layer
+                elevation="medium"
+                onEsc={() => setShowEditForm(false)}
+                onClickOutside={() => setShowEditForm(false)}
+              >
+                <EditForm
+                  gameId={props.id}
+                  editPost={props.editPost}
+                  setShowEditForm={setShowEditForm}
+                />
+              </Layer>
             )}
           </TableRow>
         )}

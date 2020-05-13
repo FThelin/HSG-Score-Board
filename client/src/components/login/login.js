@@ -16,7 +16,6 @@ const Login = (props) => {
             onReset={() => setValue({})}
             onSubmit={({ value }) => {
               user.loginUser(value);
-              //props.setShowLogin(false);
             }}
           >
             <FormField name="loggedinusername" label="Användarnamn">
@@ -29,6 +28,7 @@ const Login = (props) => {
               <Button type="submit" primary label="Logga in" />
               <Button type="reset" label="Reset" />
             </Box>
+
             {user.state.failedLogin && (
               <Box margin={{ top: "small" }} align="center">
                 <Text size="small" color="red" align="center">

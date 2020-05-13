@@ -7,12 +7,18 @@ export default class UserProvider extends React.Component {
     super(props);
     this.state = {
       username: "",
+      allUsers: [],
       loggedInUser: "",
       loggedInUserId: "",
+      userRole: "",
       failedLogin: false,
+      failedRegister: false,
     };
     this.createUser = this.createUser.bind(this);
     this.loginUser = this.loginUser.bind(this);
+    this.getAllUsers = this.getAllUsers.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
   }
 
   componentDidMount() {
@@ -41,8 +47,13 @@ export default class UserProvider extends React.Component {
       },
       body: JSON.stringify(data),
     });
-    const responseData = await response.json();
-    this.setState({ username: responseData.username });
+    if (response.status === 200) {
+      const responseData = await response.json();
+      this.setState({ username: responseData.username });
+      this.setState({ failedRegister: false });
+    } else if (response.status === 403) {
+      this.setState({ failedRegister: true });
+    }
   }
 
   async loginUser(data) {
@@ -69,6 +80,50 @@ export default class UserProvider extends React.Component {
     }
   }
 
+  //Get all users
+  async getAllUsers() {
+    if (this.state.loggedInUser === "admin") {
+      try {
+        const response = await fetch("http://localhost:5000/users", {
+          credentials: "include",
+        });
+        const data = await response.json();
+        console.log("DATA:", data);
+        this.setState({ allUsers: data });
+      } catch {
+        console.log("Error");
+      }
+    }
+  }
+
+  async updateUser(value, id) {
+    const response = await fetch(`http://localhost:5000/users/${id}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    });
+    console.log(response);
+    this.getAllResults();
+  }
+
+  async deleteUser(id) {
+    try {
+      const response = await fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      this.getAllUsers();
+    } catch {
+      console.log("Error");
+    }
+  }
+
   render() {
     return (
       <UserContext.Provider
@@ -76,6 +131,9 @@ export default class UserProvider extends React.Component {
           state: this.state,
           createUser: this.createUser,
           loginUser: this.loginUser,
+          getAllUsers: this.getAllUsers,
+          updateUser: this.updateUser,
+          deleteUser: this.deleteUser,
         }}
       >
         {this.props.children}
