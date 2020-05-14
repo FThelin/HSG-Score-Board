@@ -87,16 +87,18 @@ export default class GameProvider extends React.Component {
 
   render() {
     return (
-      <GameContext.Provider
-        value={{
-          state: this.state,
-          createPost: this.createPost,
-          editPost: this.editPost,
-          deleteResult: this.deleteResult,
-        }}
-      >
-        {this.props.children}
-      </GameContext.Provider>
+      <GameConsumer>
+        <GameContext.Provider
+          value={{
+            state: this.state,
+            createPost: this.createPost,
+            editPost: this.editPost,
+            deleteResult: this.deleteResult,
+          }}
+        >
+          {this.props.children}
+        </GameContext.Provider>
+      </GameConsumer>
     );
   }
 }

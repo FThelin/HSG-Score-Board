@@ -9,7 +9,9 @@ const PostForm = (props) => {
     penalties: 0,
   });
   const [usernames, setUsernames] = useState([]);
-  const [userValue, setUserValue] = useState("");
+  //const [userValue, setUserValue] = useState("");
+  const [userId, setUserId] = useState("");
+  const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
     getUserNames();
@@ -17,8 +19,16 @@ const PostForm = (props) => {
 
   const getUserNames = async () => {
     const data = await props.getAllUsers();
+    setAllUsers(data);
     for (const user of data) {
       usernames.push(user.username);
+    }
+  };
+
+  const getUserId = (name) => {
+    let id = allUsers.find((user) => user.username === name);
+    if (id) {
+      setUserId(id._id);
     }
   };
 
@@ -30,16 +40,19 @@ const PostForm = (props) => {
           onChange={(nextValue) => setValue(nextValue)}
           onReset={() => setValue({})}
           onSubmit={({ value }) => {
-            props.createPost(props.loggedInUser, props.gameId, value);
+            if (user.state.userRole === "admin") {
+              props.createPost(userId, props.gameId, value);
+            } else {
+              props.createPost(props.loggedInUser, props.gameId, value);
+            }
             props.setShowPostForm(false);
           }}
         >
-          {console.log(usernames)}
           {user.state.userRole === "admin" && (
             <Select
               options={usernames}
               value={value}
-              onChange={({ option }) => setUserValue(option)}
+              onChange={({ option }) => getUserId(option)}
             />
           )}
           <FormField name="goals" label="Mål">
