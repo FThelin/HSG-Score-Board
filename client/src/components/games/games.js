@@ -68,15 +68,17 @@ const Games = () => {
                     <Button
                       primary
                       label="Lägg till dina poäng"
-                      onClick={() => setShowPostForm(true)}
+                      onClick={() => {
+                        setShowPostForm(true);
+                      }}
                     />
-
                     {showPostForm && (
                       <PostForm
                         loggedInUser={user.state.loggedInUserId}
                         gameId={theGame._id}
                         createPost={game.createPost}
                         setShowPostForm={setShowPostForm}
+                        getAllUsers={user.getAllUsers}
                       />
                     )}
                   </Box>

@@ -24,7 +24,11 @@ const App = () => {
                 label="Ny användare"
                 onClick={() => setShowRegister(true)}
               />
-              <Button label="Logga in" onClick={() => setShowLogin(true)} />
+              {!user.state.loggedInUser ? (
+                <Button label="Logga in" onClick={() => setShowLogin(true)} />
+              ) : (
+                <Button label="Logga ut" onClick={() => user.logoutUser()} />
+              )}
               {showRegister && (
                 <Layer
                   elevation="medium"
@@ -46,7 +50,7 @@ const App = () => {
               {user.state.loggedInUser && (
                 <Text>Logged in as: {user.state.loggedInUser}</Text>
               )}
-              {user.state.loggedInUser === "admin" && (
+              {user.state.userRole === "admin" && (
                 <Button
                   onClick={() => {
                     setShowAllUsers(true);

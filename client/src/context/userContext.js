@@ -13,26 +13,32 @@ export default class UserProvider extends React.Component {
       userRole: "",
       failedLogin: false,
       failedRegister: false,
+      failedEditUser: false,
     };
     this.createUser = this.createUser.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.getAllUsers = this.getAllUsers.bind(this);
     this.updateUser = this.updateUser.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
+    this.updateRole = this.updateRole.bind(this);
   }
 
   componentDidMount() {
     this.getLoggedInUser();
+    this.getAllUsers();
   }
 
   getLoggedInUser() {
     if (document.cookie) {
       let user = JSON.parse(localStorage.getItem("user"));
       let userId = JSON.parse(localStorage.getItem("userId"));
+      let role = JSON.parse(localStorage.getItem("userRole"));
 
       this.setState({
         loggedInUser: user,
         loggedInUserId: userId,
+        userRole: role,
       });
     } else {
       localStorage.clear();
@@ -56,6 +62,7 @@ export default class UserProvider extends React.Component {
     }
   }
 
+  //log in user
   async loginUser(data) {
     const response = await fetch("http://localhost:5000/users/login", {
       method: "POST",
@@ -70,43 +77,83 @@ export default class UserProvider extends React.Component {
 
       localStorage.setItem("user", JSON.stringify(responseData.username));
       localStorage.setItem("userId", JSON.stringify(responseData._id));
+      localStorage.setItem("userRole", JSON.stringify(responseData.role));
       this.setState({
         loggedInUser: responseData.username,
         loggedInUserId: responseData._id,
         failedLogin: false,
+        userRole: responseData.role,
       });
+      this.getAllUsers();
     } else if (response.status === 401) {
       this.setState({ failedLogin: true });
     }
   }
 
+  //Logout user
+  async logoutUser() {
+    try {
+      await fetch("http://localhost:5000/users/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      this.setState({
+        loggedInUser: "",
+        loggedInUserId: "",
+      });
+      localStorage.clear();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   //Get all users
   async getAllUsers() {
-    if (this.state.loggedInUser === "admin") {
+    if (this.state.userRole === "admin") {
       try {
         const response = await fetch("http://localhost:5000/users", {
           credentials: "include",
         });
         const data = await response.json();
-        console.log("DATA:", data);
         this.setState({ allUsers: data });
-      } catch {
-        console.log("Error");
+        return data;
+      } catch (error) {
+        console.log(error);
       }
     }
   }
 
-  async updateUser(value, id) {
-    const response = await fetch(`http://localhost:5000/users/${id}`, {
-      method: "PUT",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(value),
-    });
-    console.log(response);
-    this.getAllResults();
+  async updateRole(id, role) {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/${id}/${role}`,
+        {
+          method: "PUT",
+          credentials: "include",
+        }
+      );
+      this.getAllUsers();
+    } catch {
+      console.log("Error");
+    }
+  }
+
+  async updateUser(id, value) {
+    try {
+      const response = await fetch(`http://localhost:5000/users/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      });
+      this.setState({ failedEditUser: false });
+      this.getAllUsers();
+    } catch {
+      console.log("Error");
+      this.setState({ failedEditUser: true });
+    }
   }
 
   async deleteUser(id) {
@@ -134,6 +181,8 @@ export default class UserProvider extends React.Component {
           getAllUsers: this.getAllUsers,
           updateUser: this.updateUser,
           deleteUser: this.deleteUser,
+          logoutUser: this.logoutUser,
+          updateRole: this.updateRole,
         }}
       >
         {this.props.children}

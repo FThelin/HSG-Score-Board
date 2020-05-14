@@ -51,21 +51,23 @@ export default class GameProvider extends React.Component {
         body: JSON.stringify(value),
       }
     );
-    console.log(response);
     this.getAllResults();
   }
 
   async editPost(gameId, value) {
-    const response = await fetch(`http://localhost:5000/games/${gameId}`, {
-      method: "PUT",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(value),
-    });
-    console.log(response);
-    this.getAllResults();
+    try {
+      const response = await fetch(`http://localhost:5000/games/${gameId}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      });
+      this.getAllResults();
+    } catch {
+      console.log("Error");
+    }
   }
 
   async deleteResult(id) {

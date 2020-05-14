@@ -15,9 +15,13 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-"loggedinusername": "Fippe5",
-"password": "12345"
+"loggedinusername": "admin",
+"password": "admin"
 }
+
+###
+
+POST http://localhost:5000/users/logout
 
 ###
 
@@ -25,9 +29,11 @@ PUT http://localhost:5000/users/5eb91c47353fbc28281b40da
 Content-Type: application/json
  
 {
-"password": "nougatalle"
+"password": "12345"
 }
 
+###
+PUT http://localhost:5000/users/5ebd0aab25f38536a8df4e29/admin
 
 ###
 

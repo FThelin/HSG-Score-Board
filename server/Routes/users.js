@@ -23,6 +23,7 @@ router.post("/register", async (req, res) => {
     const user = new User({
       username: req.body.username,
       password: password,
+      role: "player",
     });
 
     const foundUser = await User.findOne({ username: req.body.username });
@@ -45,15 +46,8 @@ router.post("/login", async (req, res) => {
     return res.status(401).json("Wrong username or password");
   }
 
-  //Set session username
-  // if (req.session.username === user.username) {
-  //   req.session = null;
-  // }
-
   req.session.username = user.username;
-  console.log("user.username", user.username);
-  console.log("user.username", req.session.username);
-  if (req.session.username === "admin") {
+  if (user.role === "admin") {
     req.session.role = "admin";
   } else {
     req.session.role = "player";
@@ -63,7 +57,17 @@ router.post("/login", async (req, res) => {
   res.status(200).json(user);
 });
 
-// Update user
+//Logout user
+router.post("/logout", async (req, res) => {
+  try {
+    req.session = null;
+    res.status(200).send("Successfully logged out user");
+  } catch {
+    res.status(418).send("Could not log out user");
+  }
+});
+
+// Update user password
 router.put("/:id", adminCheck, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.id });
@@ -79,6 +83,19 @@ router.put("/:id", adminCheck, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//Update user role
+router.put("/:id/:role", adminCheck, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+    user.role = req.params.role;
+    await user.save();
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // Delete user
 router.delete("/:id", adminCheck, async (req, res) => {
   try {
