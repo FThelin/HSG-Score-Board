@@ -14,12 +14,26 @@ const App = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [showAllUsers, setShowAllUsers] = useState(false);
 
+  const theTheme = {
+    global: {
+      font: {
+        family: "Teko",
+      },
+      colors: {
+        brand: "lightgray",
+        active: "red",
+        text: "#373737",
+        primary: "red",
+      },
+    },
+  };
+
   return (
     <UserProvider>
       <GameProvider>
         <UserConsumer>
           {(user) => (
-            <Grommet>
+            <Grommet theme={theTheme}>
               <Button
                 label="Ny användare"
                 onClick={() => setShowRegister(true)}

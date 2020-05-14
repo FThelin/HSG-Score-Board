@@ -100,6 +100,7 @@ export default class UserProvider extends React.Component {
       this.setState({
         loggedInUser: "",
         loggedInUserId: "",
+        userRole: "",
       });
       localStorage.clear();
     } catch (error) {
