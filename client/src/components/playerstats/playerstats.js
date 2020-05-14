@@ -21,21 +21,21 @@ const PlayerStats = (props) => {
                 <TableCell>{props.goals}</TableCell>
                 <TableCell>{props.assists}</TableCell>
                 <TableCell>{props.penalties}</TableCell>
-                {props.loggedInUser === props.player ||
-                  (user.state.userRole === "admin" && (
-                    <TableCell>
-                      <FormEdit
-                        size="medium"
-                        color="grey"
-                        onClick={() => setShowEditForm(true)}
-                      ></FormEdit>
-                      <FormTrash
-                        onClick={() => game.deleteResult(props.id)}
-                        size="medium"
-                        color="grey"
-                      ></FormTrash>
-                    </TableCell>
-                  ))}
+                {(props.loggedInUser === props.player ||
+                  user.state.userRole === "admin") && (
+                  <TableCell>
+                    <FormEdit
+                      size="medium"
+                      color="grey"
+                      onClick={() => setShowEditForm(true)}
+                    ></FormEdit>
+                    <FormTrash
+                      onClick={() => game.deleteResult(props.id)}
+                      size="medium"
+                      color="grey"
+                    ></FormTrash>
+                  </TableCell>
+                )}
                 {showEditForm && (
                   <Layer
                     elevation="medium"

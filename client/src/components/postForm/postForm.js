@@ -9,7 +9,6 @@ const PostForm = (props) => {
     penalties: 0,
   });
   const [usernames, setUsernames] = useState([]);
-  //const [userValue, setUserValue] = useState("");
   const [userId, setUserId] = useState("");
   const [allUsers, setAllUsers] = useState([]);
 
@@ -20,8 +19,10 @@ const PostForm = (props) => {
   const getUserNames = async () => {
     const data = await props.getAllUsers();
     setAllUsers(data);
-    for (const user of data) {
-      usernames.push(user.username);
+    if (data) {
+      for (const user of data) {
+        usernames.push(user.username);
+      }
     }
   };
 
