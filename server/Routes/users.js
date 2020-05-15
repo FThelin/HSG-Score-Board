@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/User");
+const GameResult = require("../models/Gameresult");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const adminCheck = require("./admin");
@@ -100,6 +101,7 @@ router.put("/:id/:role", adminCheck, async (req, res) => {
 router.delete("/:id", adminCheck, async (req, res) => {
   try {
     await User.deleteOne({ _id: req.params.id });
+    await GameResult.deleteMany({ user: req.params.id });
 
     res.status(200).send("User deleted");
   } catch (err) {

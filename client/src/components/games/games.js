@@ -30,7 +30,7 @@ const Games = () => {
                   key={index}
                   label={`${theGame.team} (${theGame.type}) ${theGame.date}`}
                 >
-                  <Box pad="medium" background="light-2">
+                  <Box pad="medium" background="light-1">
                     <Table>
                       <TableHeader>
                         <TableRow>
@@ -64,14 +64,26 @@ const Games = () => {
                         </TableBody>
                       ))}
                     </Table>
-
-                    <Button
-                      primary
-                      label="Lägg till dina poäng"
-                      onClick={() => {
-                        setShowPostForm(true);
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
                       }}
-                    />
+                    >
+                      <Box width="medium">
+                        <Button
+                          margin="medium"
+                          primary
+                          label="Lägg till dina poäng"
+                          onClick={() => {
+                            !showPostForm
+                              ? setShowPostForm(true)
+                              : setShowPostForm(false);
+                          }}
+                        />
+                      </Box>
+                    </div>
                     {showPostForm && (
                       <PostForm
                         loggedInUser={user.state.loggedInUserId}
