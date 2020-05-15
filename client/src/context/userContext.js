@@ -126,13 +126,10 @@ export default class UserProvider extends React.Component {
 
   async updateRole(id, role) {
     try {
-      const response = await fetch(
-        `http://localhost:5000/users/${id}/${role}`,
-        {
-          method: "PUT",
-          credentials: "include",
-        }
-      );
+      await fetch(`http://localhost:5000/users/${id}/${role}`, {
+        method: "PUT",
+        credentials: "include",
+      });
       this.getAllUsers();
     } catch {
       console.log("Error");
@@ -141,7 +138,7 @@ export default class UserProvider extends React.Component {
 
   async updateUser(id, value) {
     try {
-      const response = await fetch(`http://localhost:5000/users/${id}`, {
+      await fetch(`http://localhost:5000/users/${id}`, {
         method: "PUT",
         credentials: "include",
         headers: {
@@ -159,7 +156,7 @@ export default class UserProvider extends React.Component {
 
   async deleteUser(id) {
     try {
-      const response = await fetch(`http://localhost:5000/users/${id}`, {
+      await fetch(`http://localhost:5000/users/${id}`, {
         method: "DELETE",
         credentials: "include",
         headers: {

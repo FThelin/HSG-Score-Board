@@ -1,0 +1,100 @@
+[
+  {
+    "_id": ObjectId("5ebbed1158358f2684c08242"),
+    "username": "admin",
+    "password": "$2b$10$0A1BLgp2xseJPa3WLeeQYuqUHsbX/d9BM1iXLWC9t/s7.kkZGqi9y",
+    "role": "admin",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7bd6813e48109c5e9b66"),
+    "username": "Fredrik Thelin",
+    "password": "$2b$10$LhxBMoYrKkcdHDsByTUsyeTMtF/7crgJsZ4LiUaPoPD0AYCkIV/ui",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c10813e48109c5e9b6a"),
+    "username": "Simon Beijer",
+    "password": "$2b$10$1oWIpLNYGAN3xQGoeOKtdeI6Rr9T7X5Rdf4bBJIN/obog1e5gJreW",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cb1813e48109c5e9b76"),
+    "username": "Markus Karlsson",
+    "password": "$2b$10$7lbAeHqj60J0kodPMITxqenXNrwh8Z8DtfGukzR0ztX/HAOHQivtO",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cb2813e48109c5e9b77"),
+    "username": "Anton Öhman",
+    "password": "$2b$10$khR0s.Ns/SmkRgFN3P1xFuQ8DmbT3xzGTkb7e8HrXrrUQkfcVkem6",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7d21813e48109c5e9b81"),
+    "username": "Dick Stenqvist",
+    "password": "$2b$10$j7JhRFu4muvR7XmOoW4mBO/odTV1AstbswfnsSxi.wIdOdZRRlAte",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7dc9813e48109c5e9b88"),
+    "username": "Anne-Lie Bäck",
+    "password": "$2b$10$PnmOSCKBAlXf5q8ZaH7Z8uS5F3tVI17/Cwa1KRV85iryMVRdi.eCy",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7dff813e48109c5e9b8b"),
+    "username": "Viktor Ödman",
+    "password": "$2b$10$meR2zu8tzNOeLF5uIiSBp.TKfrN5YelrdmvGKejJO8qc0DpLlULba",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e1d813e48109c5e9b8d"),
+    "username": "Jonathan Gegerfeldt Bogg",
+    "password": "$2b$10$KS.VB2BnQxVa4i2uL0ZtL.C5xarIkUajMaJprcOoO2gkp11XewfOu",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7eb4813e48109c5e9b9a"),
+    "username": "Claudia Aranda",
+    "password": "$2b$10$XScNP8ls4IzVwRocu2yPGe2.MAqvOGF1PG6OaP6MLQDo/7CeCBeQ6",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f09813e48109c5e9ba0"),
+    "username": "Pontus Tahir",
+    "password": "$2b$10$obcfQC1XjDDfaioIDAWBcekuEDmrxsYFjZ8uCk4TNdCbRPNc3K5ea",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f97813e48109c5e9ba6"),
+    "username": "Embla Jonsson",
+    "password": "$2b$10$emDwtxGxUvjhMVvOAwK4WOUdwgtZsdtjgs3.fugwRtrYEM4pIqEhm",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe880e40317223a0213404"),
+    "username": "Viktor Olsson",
+    "password": "$2b$10$jgt3k7k8mkZIhLJzl6bJRe/lqTm.dYssuIe8yukBZuL6I9nqWj5fq",
+    "role": "player",
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe892f40317223a0213407"),
+    "username": "David Jensen",
+    "password": "$2b$10$u8l9g1HhT2mwkPd8//mbU.R05xORyOI391.LjdnKUQrv9e.NqISXC",
+    "role": "admin",
+    "__v": 0
+  }
+]

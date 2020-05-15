@@ -13,7 +13,6 @@ import { UserConsumer } from "../../context/userContext";
 
 const DisplayUpdate = (props) => {
   const [value, setValue] = useState({ password: "" });
-  const [displayInfo, setDisplayInfo] = useState(false);
 
   return (
     <Table>

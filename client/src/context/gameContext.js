@@ -41,22 +41,19 @@ export default class GameProvider extends React.Component {
   }
 
   async createPost(userId, gameId, value) {
-    const response = await fetch(
-      `http://localhost:5000/games/${gameId}/${userId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(value),
-      }
-    );
+    await fetch(`http://localhost:5000/games/${gameId}/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    });
     this.getAllResults();
   }
 
   async editPost(gameId, value) {
     try {
-      const response = await fetch(`http://localhost:5000/games/${gameId}`, {
+      await fetch(`http://localhost:5000/games/${gameId}`, {
         method: "PUT",
         credentials: "include",
         headers: {
@@ -72,7 +69,7 @@ export default class GameProvider extends React.Component {
 
   async deleteResult(id) {
     try {
-      const response = await fetch(`http://localhost:5000/games/${id}`, {
+      await fetch(`http://localhost:5000/games/${id}`, {
         method: "DELETE",
         credentials: "include",
         headers: {

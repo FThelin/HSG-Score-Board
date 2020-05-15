@@ -1,0 +1,425 @@
+[
+  {
+    "_id": ObjectId("5ebe7bfd813e48109c5e9b67"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7bd6813e48109c5e9b66"),
+    "goals": 1,
+    "assists": 3,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c08813e48109c5e9b68"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7bd6813e48109c5e9b66"),
+    "goals": 0,
+    "assists": 2,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c10813e48109c5e9b6b"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7bd6813e48109c5e9b66"),
+    "goals": 3,
+    "assists": 0,
+    "penalties": 4,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c25813e48109c5e9b6c"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7bd6813e48109c5e9b66"),
+    "goals": 0,
+    "assists": 2,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c33813e48109c5e9b6e"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7c10813e48109c5e9b6a"),
+    "goals": 3,
+    "assists": 2,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c40813e48109c5e9b70"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7c10813e48109c5e9b6a"),
+    "goals": 2,
+    "assists": 0,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c56813e48109c5e9b72"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7c10813e48109c5e9b6a"),
+    "goals": 1,
+    "assists": 3,
+    "penalties": 4,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7c66813e48109c5e9b73"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7c10813e48109c5e9b6a"),
+    "goals": 2,
+    "assists": 4,
+    "penalties": 5,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cca813e48109c5e9b79"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7cb2813e48109c5e9b77"),
+    "goals": 1,
+    "assists": 0,
+    "penalties": 4,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cd7813e48109c5e9b7a"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7cb2813e48109c5e9b77"),
+    "goals": 0,
+    "assists": 1,
+    "penalties": 6,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cde813e48109c5e9b7b"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7cb1813e48109c5e9b76"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 4,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cdf813e48109c5e9b7c"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7cb2813e48109c5e9b77"),
+    "goals": 0,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cec813e48109c5e9b7d"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7cb2813e48109c5e9b77"),
+    "goals": 1,
+    "assists": 0,
+    "penalties": 8,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7cf9813e48109c5e9b7e"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7cb1813e48109c5e9b76"),
+    "goals": 0,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7d00813e48109c5e9b7f"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7cb2813e48109c5e9b77"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7d05813e48109c5e9b80"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7cb1813e48109c5e9b76"),
+    "goals": 2,
+    "assists": 1,
+    "penalties": 5,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7d2c813e48109c5e9b82"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7cb1813e48109c5e9b76"),
+    "goals": 2,
+    "assists": 3,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7d50813e48109c5e9b83"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7d21813e48109c5e9b81"),
+    "goals": 0,
+    "assists": 2,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7d60813e48109c5e9b84"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7d21813e48109c5e9b81"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 4,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7db0813e48109c5e9b86"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7d21813e48109c5e9b81"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7db9813e48109c5e9b87"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7d21813e48109c5e9b81"),
+    "goals": 0,
+    "assists": 1,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7de9813e48109c5e9b89"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7dc9813e48109c5e9b88"),
+    "goals": 2,
+    "assists": 2,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7df5813e48109c5e9b8a"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7dc9813e48109c5e9b88"),
+    "goals": 1,
+    "assists": 3,
+    "penalties": 5,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e29813e48109c5e9b8e"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7dff813e48109c5e9b8b"),
+    "goals": 1,
+    "assists": 2,
+    "penalties": 5,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e2a813e48109c5e9b8f"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7dc9813e48109c5e9b88"),
+    "goals": 2,
+    "assists": 5,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e33813e48109c5e9b90"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7dc9813e48109c5e9b88"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e3f813e48109c5e9b91"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7dff813e48109c5e9b8b"),
+    "goals": 0,
+    "assists": 2,
+    "penalties": 4,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e41813e48109c5e9b92"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7e1d813e48109c5e9b8d"),
+    "goals": 3,
+    "assists": 2,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e49813e48109c5e9b93"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7e1d813e48109c5e9b8d"),
+    "goals": 3,
+    "assists": 3,
+    "penalties": 6,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e53813e48109c5e9b94"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7e1d813e48109c5e9b8d"),
+    "goals": 2,
+    "assists": 0,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e54813e48109c5e9b95"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7dff813e48109c5e9b8b"),
+    "goals": 1,
+    "assists": 0,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e5a813e48109c5e9b96"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7e1d813e48109c5e9b8d"),
+    "goals": 0,
+    "assists": 3,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e61813e48109c5e9b97"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7dff813e48109c5e9b8b"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7e72813e48109c5e9b98"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7dff813e48109c5e9b8b"),
+    "goals": 0,
+    "assists": 1,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f07813e48109c5e9b9f"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7eb4813e48109c5e9b9a"),
+    "goals": 4,
+    "assists": 3,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f10813e48109c5e9ba1"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7eb4813e48109c5e9b9a"),
+    "goals": 3,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f1c813e48109c5e9ba2"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7eb4813e48109c5e9b9a"),
+    "goals": 3,
+    "assists": 2,
+    "penalties": 12,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f6a813e48109c5e9ba3"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7f09813e48109c5e9ba0"),
+    "goals": 3,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f88813e48109c5e9ba4"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7f09813e48109c5e9ba0"),
+    "goals": 2,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7f91813e48109c5e9ba5"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7f09813e48109c5e9ba0"),
+    "goals": 0,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7fa9813e48109c5e9ba7"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe7f97813e48109c5e9ba6"),
+    "goals": 1,
+    "assists": 1,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7fb1813e48109c5e9ba8"),
+    "game": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "user": ObjectId("5ebe7f97813e48109c5e9ba6"),
+    "goals": 0,
+    "assists": 0,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7fba813e48109c5e9ba9"),
+    "game": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "user": ObjectId("5ebe7f97813e48109c5e9ba6"),
+    "goals": 2,
+    "assists": 3,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7fbf813e48109c5e9baa"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe7f97813e48109c5e9ba6"),
+    "goals": 1,
+    "assists": 0,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe7fc4813e48109c5e9bab"),
+    "game": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "user": ObjectId("5ebe7f97813e48109c5e9ba6"),
+    "goals": 2,
+    "assists": 0,
+    "penalties": 0,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe881f40317223a0213405"),
+    "game": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "user": ObjectId("5ebe880e40317223a0213404"),
+    "goals": 2,
+    "assists": 2,
+    "penalties": 2,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5ebe882540317223a0213406"),
+    "game": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "user": ObjectId("5ebe880e40317223a0213404"),
+    "goals": 3,
+    "assists": 1,
+    "penalties": 0,
+    "__v": 0
+  }
+]

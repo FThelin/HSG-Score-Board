@@ -1,0 +1,32 @@
+[
+  {
+    "_id": ObjectId("5eb50e047843d9e3dd4d7440"),
+    "team": "IBK Löksås",
+    "type": "Hemma",
+    "date": "2020-10-15"
+  },
+  {
+    "_id": ObjectId("5eb94c65e6ff410bfc1ef951"),
+    "team": "SuperTeamet",
+    "type": "Borta",
+    "date": "2020-12-13"
+  },
+  {
+    "_id": ObjectId("5ebb96c508e51b1b185bbf4b"),
+    "team": "Slackers",
+    "type": "Hemma",
+    "date": "2021-01-25"
+  },
+  {
+    "_id": ObjectId("5ebe7b948200db0b632ffbe9"),
+    "team": "Pollex",
+    "type": "Hemma",
+    "date": "2021-01-28"
+  },
+  {
+    "_id": ObjectId("5ebe7bb88200db0b632ffbf3"),
+    "team": "MDMB",
+    "type": "Borta",
+    "date": "2021-02-11"
+  }
+]
